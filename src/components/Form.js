@@ -1,28 +1,34 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 
 
 export default function Form() {
-    const [formData, setFormData] = React.useState({
+    const [formData, setFormData] = useState({
         currencySelect: "",
         expense: "",
         amount: "",
         calender: ""
     })
 
+
+
     function handleChange(event) {
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
                 [event.target.name]: event.target.value
-
             }
         })
     }
 
     function handleSubmit(event) {
         event.preventDefault()
+        // console.log(formData)
     }
+
+    useEffect(() => {
+
+    }, [formData])
 
     return (
         <>
