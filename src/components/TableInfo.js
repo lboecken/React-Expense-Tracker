@@ -11,9 +11,10 @@ export default function TableInfo() {
                 <thead>
                     <tr>
                         <th>Currency</th>
+                        <th>Date</th>
                         <th>Expense</th>
                         <th>Amount</th>
-                        <th>Date</th>
+                        <th>Comments</th>
                     </tr>
                 </thead>
                 <tbody>
