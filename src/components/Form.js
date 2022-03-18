@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react"
-import DatePicker from "react-datepicker"
-
+import { render } from "@testing-library/react"
+import React, { useState } from "react"
 
 export default function Form() {
     const [formData, setFormData] = useState({
         currencySelect: "",
-        expense: "",
+        date: "",
+        description: "",
         amount: "",
-        calender: ""
+        expense: "",
+
+
     })
-
-
 
     function handleChange(event) {
         setFormData(prevFormData => {
@@ -23,19 +23,15 @@ export default function Form() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        // console.log(formData)
+        console.log(formData)
     }
-
-    useEffect(() => {
-
-    }, [formData])
 
     return (
         <>
             <p className="add">Add a new item: </p>
 
             <form onSubmit={handleSubmit}>
-                <label htmlFor="Card">Card</label>
+                <label htmlFor="Currency">Currency</label>
                 <br />
                 <select
                     id="currencySelect"
@@ -56,17 +52,20 @@ export default function Form() {
                 <br />
 
                 <label htmlFor="Date">Date</label>
-                <DatePicker placeholderText="Click to select a date"
-                    // required="required"
-                    name="calender" />
-
+                <input
+                    type="date"
+                    required="required"
+                    value={formData.date}
+                    name="date"
+                    onChange={handleChange}
+                />
                 <br />
                 <br />
                 <label htmlFor="expense">Expense</label>
                 <br />
                 <input
                     type="text"
-                    placeholder="Expense"
+                    placeholder="What did you buy?"
                     required="required"
                     onChange={handleChange}
                     value={formData.expense}
@@ -86,6 +85,16 @@ export default function Form() {
                 />
                 <br />
                 <br />
+                <label htmlFor="comments">Comments</label>
+                <br />
+                <textarea
+                    placeholder="comments"
+                    onChange={handleChange}
+                    name="description"
+                    value={formData.description}
+                />
+                <br />
+                <br />
                 <button type="submit">Add Expense</button>
                 <br />
                 <br />
@@ -93,3 +102,13 @@ export default function Form() {
         </>
     )
 }
+
+// export default function TableInfo(props) {
+//     render()(
+//         { props.currencySelect }
+//         { props.expense }
+//         { props.amount }
+//         { props.date }
+
+//     )
+// }
