@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import React, { useState } from "react";
-import TableInfo from "./TableInfo";
 //Psuedocode:
 //The data needs to be moved from the child into the parent.
 //The children(Form and TableInfo) needs to given access to the data
@@ -12,6 +11,7 @@ export default function Form({ formData, setFormData }) {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
+        [event.target.name]: event.target.value,
       };
     });
   }
@@ -96,3 +96,13 @@ export default function Form({ formData, setFormData }) {
     </>
   );
 }
+
+// export default function TableInfo(props) {
+//     render()(
+//         { props.currencySelect }
+//         { props.expense }
+//         { props.amount }
+//         { props.date }
+
+//     )
+// }
