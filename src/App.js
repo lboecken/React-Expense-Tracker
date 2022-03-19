@@ -1,14 +1,22 @@
-import React from "react";
-import Header from './components/Header'
-import Form from './components/Form'
-import TableInfo from './components/TableInfo'
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import TableInfo from "./components/TableInfo";
 
 export default function App() {
-    return (
-        <>
-            <Header />
-            <Form />
-            <TableInfo />
-        </>
-    )
+  const [formData, setFormData] = useState({
+    currencySelect: "",
+    date: "",
+    description: "",
+    amount: "",
+    expense: "",
+  });
+
+  return (
+    <>
+      <Header />
+      <Form formData={formData} setFormData={setFormData} />
+      <TableInfo />
+    </>
+  );
 }
