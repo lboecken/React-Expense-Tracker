@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import Form from "./components/Form";
+import AddExpense from "./components/AddExpense";
 import TableInfo from "./components/TableInfo";
 
 export default function App() {
-  const [formData, setFormData] = useState({
-    currencySelect: "",
-    date: "",
-    description: "",
-    amount: "",
-    expense: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   currencySelect: "",
+  //   date: "",
+  //   description: "",
+  //   amount: "",
+  //   expense: "",
+  // })
+  const [expenses, setExpenses] = useState([]);
 
+  // console.log(expenses)
   return (
     <>
       <Header />
-      <Form formData={formData} setFormData={setFormData} />
-      <TableInfo />
+      <AddExpense setExpenses={setExpenses} />
+      <TableInfo expenses={expenses} setExpenses={setExpenses} />
     </>
   );
 }

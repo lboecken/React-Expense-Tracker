@@ -1,15 +1,39 @@
+* {
+  box-sizing: border-box;
+}
 
+.project--header {
+  background-color: #0476f2;
+  color: white;
+}
 
 .title {
-    text-align: center;
-    padding: 15px;
-    font-size: 40px; 
+  text-align: center;
+  padding: 15px;
+  font-size: 40px;
 }
 
 .add {
-    text-align: center;
-    font-size: 35px;
-    padding: 15px;
-
+  text-align: center;
+  font-size: 35px;
+  padding: 15px;
 }
 
+.expense-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 200px;
+  gap: 40px;
+  padding: 30px;
+  background-color: #aaaaaa;
+  color: white;
+}
+
+.formDescription {
+  font-size: 35px;
+}
+
+.project--table {
+  background-color: #00f7ff;
+  font-size: 30px;
+}

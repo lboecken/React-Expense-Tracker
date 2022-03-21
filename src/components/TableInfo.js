@@ -1,11 +1,16 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import Form from "./Form";
 
-export default function TableInfo() {
+export default function TableInfo({ expenses, setExpenses }) {
+  function deleteTableRow(index) {
+    const list = [...expenses];
+    list.splice(index, 1);
+    setExpenses(list);
+  }
+
   return (
     <>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="project--table">
         <thead>
           <tr>
             <th>Currency</th>
@@ -13,15 +18,22 @@ export default function TableInfo() {
             <th>Expense</th>
             <th>Amount</th>
             <th>Comments</th>
+            <th>Operation</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {expenses.map((expense) => (
+            <tr>
+              <td>{expense.currencySelect}</td>
+              <td>{expense.date}</td>
+              <td>{expense.expense}</td>
+              <td>{expense.amount}</td>
+              <td>{expense.description}</td>
+              <td>
+                <button onClick={() => deleteTableRow(expenses)}>Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </>

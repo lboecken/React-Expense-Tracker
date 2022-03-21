@@ -1,11 +1,14 @@
-import React from "react"
+import React from "react";
 
 export default function Header() {
-    return (
-        <>
-            <header>
-                <h1 className="title">My Expense Tracker</h1>
-            </header>
-        </>
-    )
+  return (
+    <div className="project--header">
+      <header>
+        <h1 className="title"> Expense Tracker</h1>
+      </header>
+      <p className="add" id="ExpenseData">
+        Add a new item:
+      </p>
+    </div>
+  );
 }

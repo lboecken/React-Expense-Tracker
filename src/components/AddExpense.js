@@ -1,16 +1,32 @@
-import { render } from "@testing-library/react";
 import React, { useState } from "react";
+
 //Psuedocode:
 //The data needs to be moved from the child into the parent.
 //The children(Form and TableInfo) needs to given access to the data
 // In your Form function place props as the argument.
 // how do i get the data type from the array and how do i map it out.
 
-export default function Form({ formData, setFormData }) {
+export default function Form({ setExpenses }) {
+  const [expense, setExpense] = useState({
+    currencySelect: "",
+    date: "",
+    description: "",
+    amount: "",
+    expense: "",
+  });
+
+  // function handleChange(event) {
+  //   setExpenses((prevFormData) => {
+  //     return {
+  //       ...prevFormData,
+  //       [event.target.name]: event.target.value,
+  //     }
+  //   })
+  // }
   function handleChange(event) {
-    setFormData((prevFormData) => {
+    setExpense((prevState) => {
       return {
-        ...prevFormData,
+        ...prevState,
         [event.target.name]: event.target.value,
       };
     });
@@ -18,20 +34,19 @@ export default function Form({ formData, setFormData }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    setExpenses((existingExpenses) => [...existingExpenses, expense]);
   }
 
   return (
     <>
-      <p className="add">Add a new item: </p>
-
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="Currency">Currency</label>
-        <br />
+      <form onSubmit={handleSubmit} className="expense-form">
+        <label htmlFor="Currency" className="formDescription">
+          Currency
+        </label>
         <select
           id="currencySelect"
           required="required"
-          value={formData.currencySelect}
+          value={expense.currencySelect}
           onChange={handleChange}
           name="currencySelect"
         >
@@ -43,66 +58,58 @@ export default function Form({ formData, setFormData }) {
           <option value="other">Other</option>
         </select>
         <br />
-        <br />
 
-        <label htmlFor="Date">Date</label>
+        <label htmlFor="Date" className="formDescription">
+          Date
+        </label>
+
         <input
           type="date"
           required="required"
-          value={formData.date}
+          value={expense.date}
           name="date"
           onChange={handleChange}
         />
-        <br />
-        <br />
-        <label htmlFor="expense">Expense</label>
+
+        <label htmlFor="expense" className="formDescription">
+          Expense
+        </label>
         <br />
         <input
           type="text"
           placeholder="What did you buy?"
           required="required"
           onChange={handleChange}
-          value={formData.expense}
+          value={expense.expense}
           name="expense"
         />
-        <br />
-        <br />
-        <label htmlFor="amount">Amount</label>
-        <br />
+
+        <label htmlFor="amount" className="formDescription">
+          Amount
+        </label>
+
         <input
           type="text"
           placeholder="Amount"
           required="required"
           onChange={handleChange}
-          value={formData.amount}
+          value={expense.amount}
           name="amount"
         />
-        <br />
-        <br />
-        <label htmlFor="comments">Comments</label>
-        <br />
+
+        <label htmlFor="comments" className="formDescription">
+          Comments
+        </label>
+
         <textarea
           placeholder="comments"
           onChange={handleChange}
           name="description"
-          value={formData.description}
+          value={expense.description}
         />
-        <br />
-        <br />
+
         <button type="submit">Add Expense</button>
-        <br />
-        <br />
       </form>
     </>
   );
 }
-
-// export default function TableInfo(props) {
-//     render()(
-//         { props.currencySelect }
-//         { props.expense }
-//         { props.amount }
-//         { props.date }
-
-//     )
-// }
