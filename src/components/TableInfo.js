@@ -1,5 +1,4 @@
-import React from "react";
-import Table from "react-bootstrap/Table";
+import Table from 'react-bootstrap/Table';
 
 export default function TableInfo({ expenses, setExpenses }) {
   function deleteTableRow(index) {
@@ -10,7 +9,7 @@ export default function TableInfo({ expenses, setExpenses }) {
 
   return (
     <>
-      <Table striped bordered hover className="project--table">
+      <Table striped bordered hover className='project--table'>
         <thead>
           <tr>
             <th>Currency</th>
@@ -22,15 +21,15 @@ export default function TableInfo({ expenses, setExpenses }) {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((expense) => (
-            <tr>
+          {expenses.map((expense, idx) => (
+            <tr key={idx}>
               <td>{expense.currencySelect}</td>
               <td>{expense.date}</td>
               <td>{expense.expense}</td>
               <td>{expense.amount}</td>
               <td>{expense.description}</td>
               <td>
-                <button onClick={() => deleteTableRow(expenses)}>Delete</button>
+                <button onClick={() => deleteTableRow(idx)}>Delete</button>
               </td>
             </tr>
           ))}
